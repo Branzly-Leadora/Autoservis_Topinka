@@ -625,7 +625,7 @@ export default function App() {
           </motion.div>
           <div style={styles.footerAddr}>Nade Mží 1108/15, 318 00 Plzeň – Skvrňany &nbsp;|&nbsp; +420 377 385 154</div>
           <div style={styles.footerLinks}>
-            <a href="https://www.firmy.cz/detail/256850-autoservis-richard-topinka-plzen-skvrnany.html" target="_blank" style={styles.footerLink}>Firmy.cz profil</a>
+            <a href="https://www.firmy.cz/detail/256850-autoservis-richard-topinka-plzen-skvrnany.html" target="_blank" rel="noreferrer" style={styles.footerLink}>Firmy.cz profil</a>
             <a href="#recenze" style={styles.footerLink} onClick={e => { e.preventDefault(); scrollTo("recenze"); }}>Recenze zákazníků</a>
             <a href="#kontakt" style={styles.footerLink} onClick={e => { e.preventDefault(); scrollTo("kontakt"); }}>Kontakt</a>
           </div>
