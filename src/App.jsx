@@ -526,7 +526,7 @@ export default function App() {
               ))}
             </StaggerChildren>
             <div style={styles.reviewLink}>
-              <a href="https://www.firmy.cz/detail/256850-autoservis-richard-topinka-plzen-skvrnany.html" target="_blank" style={styles.reviewLinkA}>
+              <a href="https://www.firmy.cz/detail/256850-autoservis-richard-topinka-plzen-skvrnany.html" target="_blank" rel="noreferrer" style={styles.reviewLinkA}>
                 📋 Přečíst všechny recenze na Firmy.cz →
               </a>
             </div>
