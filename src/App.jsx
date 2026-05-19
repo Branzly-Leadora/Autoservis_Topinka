@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -7,11 +7,6 @@ const fadeUp = {
     opacity: 1, y: 0,
     transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }
   })
-};
-
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.6 } }
 };
 
 function AnimatedSection({ children, className = "", delay = 0 }) {
@@ -89,7 +84,6 @@ const whyItems = [
 ];
 
 export default function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 500], [0, 150]);
@@ -102,7 +96,6 @@ export default function App() {
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false);
   };
 
   const styles = {
@@ -623,7 +616,7 @@ export default function App() {
           <motion.div style={styles.footerLogo} whileHover={{ color: "#e8580a" }}>
             Autoservis <span style={{ color: "#e8580a" }}>Richard Topinka</span>
           </motion.div>
-          <div style={styles.footerAddr}>Nade Mží 1108/15, 318 00 Plzeň – Skvrňany &nbsp;|&nbsp; +420 377 385 154</div>
+          <div style={styles.footerAddr}>Nade Mží 1108/15, 318 00 Plzeň – Skvrňany  |  +420 377 385 154</div>
           <div style={styles.footerLinks}>
             <a href="https://www.firmy.cz/detail/256850-autoservis-richard-topinka-plzen-skvrnany.html" target="_blank" rel="noreferrer" style={styles.footerLink}>Firmy.cz profil</a>
             <a href="#recenze" style={styles.footerLink} onClick={e => { e.preventDefault(); scrollTo("recenze"); }}>Recenze zákazníků</a>
@@ -636,4 +629,3 @@ export default function App() {
     </>
   );
 }
-
