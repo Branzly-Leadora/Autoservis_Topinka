@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# Autoservis Topinka
+Modern web application for automotive service management. Built using TypeScript and React.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
