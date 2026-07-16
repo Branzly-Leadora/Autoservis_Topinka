@@ -1,8 +1,17 @@
+// Polyfilly pro starší prohlížeče (Safari < 14 apod.), aby reveal animace,
+// parallax a scroll efekty fungovaly na všech zařízeních.
+import 'intersection-observer';
+import { ResizeObserver as ResizeObserverPolyfill } from '@juggle/resize-observer';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+if (typeof window !== 'undefined' && !window.ResizeObserver) {
+  window.ResizeObserver = ResizeObserverPolyfill;
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

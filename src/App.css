@@ -22,6 +22,7 @@
 .app {
   background: var(--bg0);
   color: var(--text);
+  overflow-x: hidden; /* fallback pro starší prohlížeče */
   overflow-x: clip;
   position: relative;
 }
@@ -484,6 +485,7 @@
 
 /* ---------- Hero ---------- */
 .hero {
+  min-height: 100vh; /* fallback tam, kde svh není podporováno */
   min-height: 100svh;
   display: flex;
   align-items: center;
@@ -1071,6 +1073,12 @@
   border-radius: 2px;
   background: var(--green);
   flex-shrink: 0;
+}
+/* prohlížeče bez aspect-ratio dostanou pevnou výšku */
+@supports not (aspect-ratio: 1) {
+  .gallery-item {
+    height: 420px;
+  }
 }
 
 /* ---------- CTA banner ---------- */

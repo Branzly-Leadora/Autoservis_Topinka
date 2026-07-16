@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Magnetic } from "./ui";
 import { PhoneIcon } from "./icons";
+import SmartImage from "./SmartImage";
 import { CONTACT, IMAGES } from "../data";
 
 /** Celoplošný foto banner s parallaxem a hlavní výzvou k akci. */
@@ -17,7 +18,7 @@ export default function CtaBanner() {
   return (
     <section className="cta-banner" ref={ref}>
       <motion.div className="cta-banner-bg" style={reduced ? undefined : { y }} aria-hidden="true">
-        <img src={IMAGES.banner} alt="" loading="lazy" />
+        <SmartImage src={IMAGES.banner} alt="" loading="lazy" />
       </motion.div>
       <div className="cta-banner-overlay" aria-hidden="true" />
       <div className="container cta-banner-content">

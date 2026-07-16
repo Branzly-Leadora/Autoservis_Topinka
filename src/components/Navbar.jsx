@@ -38,8 +38,13 @@ export default function Navbar() {
     const onChange = (e) => {
       if (e.matches) setOpen(false);
     };
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
+    // starší Safari zná jen addListener/removeListener
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else mq.addListener(onChange);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", onChange);
+      else mq.removeListener(onChange);
+    };
   }, []);
 
   // Základní správa fokusu dialogu: Escape zavírá, fokus jde do menu a zpět.

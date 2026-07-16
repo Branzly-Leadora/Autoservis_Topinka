@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import { Magnetic, CountUp, EASE } from "./ui";
 import { PhoneIcon, ArrowIcon, StarIcon } from "./icons";
+import SmartImage from "./SmartImage";
 import { CONTACT, ROTATING_WORDS, HERO_STATS, IMAGES } from "../data";
 
 /** Síť částic na pozadí – jemně driftuje a reaguje na kurzor. */
@@ -30,7 +31,9 @@ function ParticleField() {
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(90, Math.floor((w * h) / 16000));
+      // na malých (typicky slabších) zařízeních méně částic kvůli plynulosti
+      const cap = w < 700 ? 45 : 90;
+      const count = Math.min(cap, Math.floor((w * h) / 16000));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -107,20 +110,23 @@ function ParticleField() {
     // Kurzor sledujeme na celé hero sekci (obsah leží nad canvasem),
     // a smyčku pozastavíme, když hero odscrolluje z viewportu.
     const host = canvas.closest(".hero") || canvas.parentElement;
-    const io = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      if (visible && raf === null) raf = requestAnimationFrame(step);
-    });
+    let io = null;
+    if (typeof IntersectionObserver !== "undefined") {
+      io = new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible && raf === null) raf = requestAnimationFrame(step);
+      });
+      io.observe(host);
+    }
 
     resize();
     raf = requestAnimationFrame(step);
-    io.observe(host);
     window.addEventListener("resize", resize);
     host.addEventListener("pointermove", onMove);
     host.addEventListener("pointerleave", onLeave);
     return () => {
       if (raf !== null) cancelAnimationFrame(raf);
-      io.disconnect();
+      io?.disconnect();
       window.removeEventListener("resize", resize);
       host.removeEventListener("pointermove", onMove);
       host.removeEventListener("pointerleave", onLeave);
@@ -186,7 +192,7 @@ export default function Hero() {
   return (
     <section className="hero" id="hero" ref={ref}>
       <motion.div className="hero-bg" style={{ y: bgY }} aria-hidden="true">
-        <img className="hero-bg-photo" src={IMAGES.hero} alt="" />
+        <SmartImage className="hero-bg-photo" src={IMAGES.hero} alt="" fetchPriority="high" />
         <div className="hero-grid-lines" />
         <div className="hero-glow hero-glow--1" />
         <div className="hero-glow hero-glow--2" />

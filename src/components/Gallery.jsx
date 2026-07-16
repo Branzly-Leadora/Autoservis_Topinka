@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { SectionHead, Stagger, Parallax, fadeUp } from "./ui";
+import SmartImage from "./SmartImage";
 import { GALLERY } from "../data";
 
 /** Fotogalerie stanice – parallax posuny a zoom s popiskem na hover. */
@@ -22,7 +23,7 @@ export default function Gallery() {
             <motion.div variants={fadeUp} key={photo.src} className={`gallery-cell gallery-cell--${i}`}>
               <Parallax range={i === 1 ? 30 : 16}>
                 <figure className="gallery-item">
-                  <img src={photo.src} alt={photo.alt} loading="lazy" />
+                  <SmartImage src={photo.src} alt={photo.alt} loading="lazy" />
                   <figcaption className="gallery-caption">
                     <span className="gallery-caption-line" aria-hidden="true" />
                     {photo.caption}

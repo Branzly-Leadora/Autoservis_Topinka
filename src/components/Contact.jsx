@@ -6,19 +6,25 @@ import { CONTACT } from "../data";
 
 /** Zjistí, zda je právě otevřeno (Po–Pá 7:30–16:00, čas v Praze). */
 function isOpenNow() {
-  const now = new Date();
-  const parts = new Intl.DateTimeFormat("cs-CZ", {
-    timeZone: "Europe/Prague",
-    hour: "numeric",
-    minute: "numeric",
-    weekday: "short",
-    hour12: false,
-  }).formatToParts(now);
-  const get = (type) => parts.find((p) => p.type === type)?.value ?? "";
-  const weekday = get("weekday").toLowerCase();
-  const minutes = parseInt(get("hour"), 10) * 60 + parseInt(get("minute"), 10);
-  const isWorkday = !["so", "ne"].includes(weekday.slice(0, 2));
-  return isWorkday && minutes >= 7 * 60 + 30 && minutes < 16 * 60;
+  try {
+    const now = new Date();
+    const parts = new Intl.DateTimeFormat("cs-CZ", {
+      timeZone: "Europe/Prague",
+      hour: "numeric",
+      minute: "numeric",
+      weekday: "short",
+      hour12: false,
+    }).formatToParts(now);
+    const get = (type) => parts.find((p) => p.type === type)?.value ?? "";
+    const weekday = get("weekday").toLowerCase();
+    const minutes = parseInt(get("hour"), 10) * 60 + parseInt(get("minute"), 10);
+    if (Number.isNaN(minutes)) return false;
+    const isWorkday = !["so", "ne"].includes(weekday.slice(0, 2));
+    return isWorkday && minutes >= 7 * 60 + 30 && minutes < 16 * 60;
+  } catch {
+    // exotický prohlížeč bez Intl/timeZone – radši ukážeme „zavřeno"
+    return false;
+  }
 }
 
 export default function Contact() {
