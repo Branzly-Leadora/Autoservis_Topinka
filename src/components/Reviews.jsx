@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { SectionHead, Reveal, EASE } from "./ui";
 import { StarIcon, ArrowIcon } from "./icons";
 import { REVIEWS, RATINGS, CONTACT } from "../data";
@@ -17,20 +17,19 @@ const slideVariants = {
 export default function Reviews() {
   const [[index, dir], setIndex] = useState([0, 1]);
   const [paused, setPaused] = useState(false);
-  const reduced = useReducedMotion();
 
   const go = useCallback((delta) => {
     setIndex(([i]) => [(i + delta + REVIEWS.length) % REVIEWS.length, delta > 0 ? 1 : -1]);
   }, []);
 
   useEffect(() => {
-    if (paused || reduced) return;
+    if (paused) return;
     const t = setInterval(() => {
       if (document.hidden) return;
       go(1);
     }, AUTOPLAY_MS);
     return () => clearInterval(t);
-  }, [paused, reduced, go]);
+  }, [paused, go]);
 
   const review = REVIEWS[index];
 

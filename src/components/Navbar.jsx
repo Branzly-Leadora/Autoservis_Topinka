@@ -79,7 +79,7 @@ export default function Navbar() {
         <button
           className="nav-logo"
           onClick={scrollToTop}
-          aria-label="STK Topinka – zpět na začátek stránky"
+          aria-label="Autoservis Topinka – zpět na začátek stránky"
         >
           <span className="nav-logo-badge" aria-hidden="true">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -87,8 +87,8 @@ export default function Navbar() {
             </svg>
           </span>
           <span className="nav-logo-text">
-            STK <em>Topinka</em>
-            <small>Stanice technické kontroly · Plzeň</small>
+            Autoservis <em>Topinka</em>
+            <small>STK & Emise · Plzeň</small>
           </span>
         </button>
 

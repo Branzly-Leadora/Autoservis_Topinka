@@ -1,6 +1,6 @@
-# STK Topinka – Stanice technické kontroly Plzeň
+# Autoservis Topinka – STK & Emise Plzeň
 
-Moderní jednostránkový web stanice technické kontroly (STK) postavený na Reactu
+Moderní jednostránkový web zaměřený na STK a měření emisí, postavený na Reactu
 a framer-motion. Tmavý „carbon“ design se signální zelenou, plný animací:
 preloader, particle síť v hero sekci, parallax, běžící pás, 3D tilt karty,
 scrollem dokreslovaná časová osa, animovaný ceník se záložkami, karusel recenzí

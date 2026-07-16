@@ -6,11 +6,11 @@ export default function Footer() {
       <div className="footer-stripe" aria-hidden="true" />
       <div className="container footer-inner">
         <div className="footer-brand" aria-hidden="true">
-          STK TOPINKA
+          AUTOSERVIS TOPINKA
         </div>
         <div className="footer-cols">
           <div>
-            <div className="footer-col-title">Stanice technické kontroly</div>
+            <div className="footer-col-title">Autoservis Topinka · STK & Emise</div>
             <p className="footer-text">
               {CONTACT.addressLine1}
               <br />
@@ -51,7 +51,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} STK Topinka · Plzeň. Všechna práva vyhrazena.</span>
+          <span>© {new Date().getFullYear()} Autoservis Topinka · Plzeň. Všechna práva vyhrazena.</span>
           <span className="footer-note">Ceny v ceníku jsou orientační.</span>
         </div>
       </div>

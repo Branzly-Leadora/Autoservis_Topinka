@@ -124,7 +124,7 @@ export default function Contact() {
 
           <Reveal className="contact-map" delay={0.15}>
             <iframe
-              title="Mapa – STK Topinka, Nade Mží 1108/15, Plzeň"
+              title="Mapa – Autoservis Topinka, Nade Mží 1108/15, Plzeň"
               src={CONTACT.mapsEmbed}
               allowFullScreen
               loading="lazy"

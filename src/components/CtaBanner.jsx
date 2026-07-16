@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Magnetic } from "./ui";
 import { PhoneIcon } from "./icons";
 import SmartImage from "./SmartImage";
@@ -8,7 +8,6 @@ import { CONTACT, IMAGES } from "../data";
 /** Celoplošný foto banner s parallaxem a hlavní výzvou k akci. */
 export default function CtaBanner() {
   const ref = useRef(null);
-  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -17,7 +16,7 @@ export default function CtaBanner() {
 
   return (
     <section className="cta-banner" ref={ref}>
-      <motion.div className="cta-banner-bg" style={reduced ? undefined : { y }} aria-hidden="true">
+      <motion.div className="cta-banner-bg" style={{ y }} aria-hidden="true">
         <SmartImage src={IMAGES.banner} alt="" loading="lazy" />
       </motion.div>
       <div className="cta-banner-overlay" aria-hidden="true" />

@@ -34,12 +34,12 @@ export default function Preloader() {
           />
         </svg>
         <div className="preloader-brand">
-          {"STK TOPINKA".split("").map((ch, i) => (
+          {"AUTOSERVIS TOPINKA".split("").map((ch, i) => (
             <motion.span
               key={i}
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 + i * 0.045, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: 0.35 + i * 0.035, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
               {ch === " " ? " " : ch}
             </motion.span>
@@ -51,7 +51,7 @@ export default function Preloader() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.0, duration: 0.4 }}
         >
-          Stanice technické kontroly · Plzeň
+          STK & Emise · Plzeň
         </motion.div>
       </div>
     </motion.div>

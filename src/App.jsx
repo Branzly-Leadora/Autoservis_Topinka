@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { AnimatePresence, MotionConfig } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { initSmoothScroll } from "./lib/smoothScroll";
 import "./App.css";
 
@@ -48,7 +48,7 @@ export default function App() {
   }, [loading]);
 
   return (
-    <MotionConfig reducedMotion="user">
+    <>
       <div className="app">
         <AnimatePresence>{loading && <Preloader key="preloader" />}</AnimatePresence>
 
@@ -73,6 +73,6 @@ export default function App() {
         <FloatingCall />
         <BackToTop />
       </div>
-    </MotionConfig>
+    </>
   );
 }

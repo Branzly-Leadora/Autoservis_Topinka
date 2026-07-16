@@ -1,11 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Magnetic, CountUp, EASE } from "./ui";
 import { PhoneIcon, ArrowIcon, StarIcon } from "./icons";
 import SmartImage from "./SmartImage";
@@ -14,10 +8,8 @@ import { CONTACT, ROTATING_WORDS, HERO_STATS, IMAGES } from "../data";
 /** Síť částic na pozadí – jemně driftuje a reaguje na kurzor. */
 function ParticleField() {
   const canvasRef = useRef(null);
-  const reduced = useReducedMotion();
 
   useEffect(() => {
-    if (reduced) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     let raf = null;
@@ -131,7 +123,7 @@ function ParticleField() {
       host.removeEventListener("pointermove", onMove);
       host.removeEventListener("pointerleave", onLeave);
     };
-  }, [reduced]);
+  }, []);
 
   return <canvas ref={canvasRef} className="hero-particles" aria-hidden="true" />;
 }
@@ -139,15 +131,13 @@ function ParticleField() {
 /** Rotující slovo v podtitulku. Čtečkám nabídne statický výčet. */
 function RotatingWord() {
   const [i, setI] = useState(0);
-  const reduced = useReducedMotion();
   useEffect(() => {
-    if (reduced) return;
     const t = setInterval(() => {
       if (document.hidden) return;
       setI((v) => (v + 1) % ROTATING_WORDS.length);
     }, 2400);
     return () => clearInterval(t);
-  }, [reduced]);
+  }, []);
   return (
     <>
       <span className="sr-only">{ROTATING_WORDS.join(", ")}.</span>

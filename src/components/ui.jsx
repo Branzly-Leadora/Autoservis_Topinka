@@ -7,7 +7,6 @@ import {
   useScroll,
   useTransform,
   animate,
-  useReducedMotion,
 } from "framer-motion";
 
 export const EASE = [0.22, 1, 0.36, 1];
@@ -80,10 +79,9 @@ export function Magnetic({ children, strength = 0.3 }) {
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 200, damping: 16 });
   const sy = useSpring(y, { stiffness: 200, damping: 16 });
-  const reduced = useReducedMotion();
 
   const onMove = (e) => {
-    if (reduced || !ref.current) return;
+    if (!ref.current) return;
     const r = ref.current.getBoundingClientRect();
     x.set((e.clientX - r.left - r.width / 2) * strength);
     y.set((e.clientY - r.top - r.height / 2) * strength);
@@ -112,10 +110,9 @@ export function TiltCard({ children, className = "", max = 8 }) {
   const ry = useMotionValue(0);
   const srx = useSpring(rx, { stiffness: 180, damping: 18 });
   const sry = useSpring(ry, { stiffness: 180, damping: 18 });
-  const reduced = useReducedMotion();
 
   const onMove = (e) => {
-    if (reduced || !ref.current) return;
+    if (!ref.current) return;
     const r = ref.current.getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width;
     const py = (e.clientY - r.top) / r.height;
@@ -152,14 +149,9 @@ export function CountUp({ value, decimals = 0, suffix = "", duration = 1.6 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const [display, setDisplay] = useState("0");
-  const reduced = useReducedMotion();
 
   useEffect(() => {
     if (!inView) return;
-    if (reduced) {
-      setDisplay(value.toLocaleString("cs-CZ", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }));
-      return;
-    }
     const controls = animate(0, value, {
       duration,
       ease: EASE,
@@ -172,7 +164,7 @@ export function CountUp({ value, decimals = 0, suffix = "", duration = 1.6 }) {
         ),
     });
     return () => controls.stop();
-  }, [inView, value, decimals, duration, reduced]);
+  }, [inView, value, decimals, duration]);
 
   return (
     <span ref={ref}>
@@ -229,9 +221,8 @@ export function Parallax({ children, range = 40, className = "" }) {
     offset: ["start end", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], [range, -range]);
-  const reduced = useReducedMotion();
   return (
-    <motion.div ref={ref} style={reduced ? undefined : { y }} className={className}>
+    <motion.div ref={ref} style={{ y }} className={className}>
       {children}
     </motion.div>
   );

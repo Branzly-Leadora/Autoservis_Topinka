@@ -7,19 +7,22 @@ const NAV_OFFSET = -84; // výška fixní navigace + rezerva
 
 /**
  * Nastartuje Lenis smooth scroll a zachytávání kotevních odkazů.
- * Vrací cleanup funkci. Při prefers-reduced-motion se nespouští.
+ * Běží na všech zařízeních – kolečko myši, trackpad i dotyk (syncTouch).
+ * Vrací cleanup funkci.
  */
 export function initSmoothScroll() {
   if (lenis) return () => {};
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    return () => {};
-  }
 
   try {
     lenis = new Lenis({
-      duration: 1.15,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      // plynulý scroll i na dotykových zařízeních (mobil, tablet)
+      syncTouch: true,
+      touchMultiplier: 1.6,
+      wheelMultiplier: 1,
+      gestureOrientation: "vertical",
     });
   } catch {
     lenis = null;
