@@ -3,6 +3,13 @@
 import 'intersection-observer';
 import { ResizeObserver as ResizeObserverPolyfill } from '@juggle/resize-observer';
 
+// Self-hostované fonty – žádná závislost na Google Fonts, načtou se vždy.
+import '@fontsource/bebas-neue/400.css';
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/500.css';
+import '@fontsource/dm-sans/600.css';
+import '@fontsource/dm-sans/700.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';

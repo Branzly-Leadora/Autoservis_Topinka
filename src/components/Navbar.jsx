@@ -6,21 +6,39 @@ import { scrollToId, scrollToTop, setScrollPaused } from "../lib/smoothScroll";
 
 const LINKS = [
   { id: "sluzby", label: "Služby" },
-  { id: "prubeh", label: "Jak to probíhá" },
+  { id: "prubeh", label: "Průběh" },
   { id: "cenik", label: "Ceník" },
+  { id: "kalkulacka", label: "Kalkulačka" },
   { id: "recenze", label: "Recenze" },
-  { id: "faq", label: "Časté dotazy" },
+  { id: "objednani", label: "Objednání" },
   { id: "kontakt", label: "Kontakt" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
   const { scrollY } = useScroll();
   const burgerRef = useRef(null);
   const menuRef = useRef(null);
 
   useEffect(() => scrollY.on("change", (v) => setScrolled(v > 50)), [scrollY]);
+
+  // Scrollspy – zvýrazní odkaz sekce, která je právě ve viewportu.
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") return;
+    const sections = LINKS.map((l) => document.getElementById(l.id)).filter(Boolean);
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, []);
 
   // Zámek scrollu (nativního i Lenis), dokud je otevřené mobilní menu.
   useEffect(() => {
@@ -94,7 +112,12 @@ export default function Navbar() {
 
         <div className="nav-links">
           {LINKS.map((l) => (
-            <a key={l.id} className="nav-link" href={`#${l.id}`}>
+            <a
+              key={l.id}
+              className={`nav-link${active === l.id ? " nav-link--active" : ""}`}
+              href={`#${l.id}`}
+              aria-current={active === l.id ? "true" : undefined}
+            >
               {l.label}
             </a>
           ))}

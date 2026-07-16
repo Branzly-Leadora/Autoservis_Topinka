@@ -11,10 +11,13 @@ import Services from "./components/Services";
 import Process from "./components/Process";
 import Gallery from "./components/Gallery";
 import Pricing from "./components/Pricing";
+import Calculator from "./components/Calculator";
 import Checklist from "./components/Checklist";
 import Reviews from "./components/Reviews";
+import Tips from "./components/Tips";
 import Faq from "./components/Faq";
 import CtaBanner from "./components/CtaBanner";
+import Booking from "./components/Booking";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { ScrollProgress, FloatingCall, BackToTop } from "./components/Widgets";
@@ -62,10 +65,13 @@ export default function App() {
           <Process />
           <Gallery />
           <Pricing />
+          <Calculator />
           <Checklist />
           <Reviews />
+          <Tips />
           <Faq />
           <CtaBanner />
+          <Booking />
           <Contact />
         </main>
 

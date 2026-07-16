@@ -1,3 +1,6 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+# Po nasazení nahraďte doménu skutečnou adresou webu.
+Sitemap: https://www.autoservistopinka.cz/sitemap.xml

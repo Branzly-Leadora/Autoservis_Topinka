@@ -47,16 +47,28 @@ export default function CtaBanner() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Magnetic>
-            <motion.a
-              href={CONTACT.phoneHref}
-              className="btn btn--primary btn--lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
-            >
-              <PhoneIcon size={17} /> {CONTACT.phone}
-            </motion.a>
-          </Magnetic>
+          <div className="cta-banner-buttons">
+            <Magnetic>
+              <motion.a
+                href={CONTACT.phoneHref}
+                className="btn btn--primary btn--lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
+              >
+                <PhoneIcon size={17} /> {CONTACT.phone}
+              </motion.a>
+            </Magnetic>
+            <Magnetic strength={0.2}>
+              <motion.a
+                href="#objednani"
+                className="btn btn--ghost btn--lg"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                Objednat online
+              </motion.a>
+            </Magnetic>
+          </div>
         </motion.div>
       </div>
     </section>

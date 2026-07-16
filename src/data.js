@@ -226,6 +226,41 @@ export const RATINGS = [
   { score: "4,7", source: "Google · 113 recenzí" },
 ];
 
+export const TIPS = [
+  {
+    title: "Nejčastější závady, kvůli kterým auta neprojdou",
+    perex: "Většinu závad odhalíte sami za pár minut ještě doma. Nejčastěji technici narazí na tyto problémy:",
+    items: [
+      "Nefunkční žárovka – projděte všechna světla včetně osvětlení SPZ a blinkrů",
+      "Sjeté nebo poškozené pneumatiky – minimální hloubka dezénu je 1,6 mm",
+      "Nadměrná koroze nosných částí podvozku",
+      "Únik provozních kapalin – olejové skvrny pod vozem jsou varování",
+      "Prasklé čelní sklo ve stírané ploše řidiče",
+    ],
+  },
+  {
+    title: "Jak připravit auto na STK za 15 minut",
+    perex: "Rychlá domácí kontrola před cestou k nám výrazně zvýší šanci, že projedete napoprvé:",
+    items: [
+      "Zapněte postupně všechna světla a obejděte vůz – požádejte někoho o kontrolu brzdových",
+      "Vyzkoušejte houkačku, stěrače a ostřikovače (dolijte kapalinu)",
+      "Zkontrolujte hloubku dezénu a dohuštění pneumatik",
+      "Očistěte registrační značky a zkontrolujte čitelnost VIN",
+      "Připravte doklady – malý techničák je povinnost",
+    ],
+  },
+  {
+    title: "Propadlá STK: co hrozí a jak to řešit",
+    perex: "Stane se to i pečlivým řidičům. Důležité je jednat rychle a zbytečně s propadlou kontrolou nejezdit:",
+    items: [
+      "S vozidlem bez platné STK nesmíte na pozemní komunikace – hrozí pokuta",
+      "Objednejte se co nejdříve – po telefonické domluvě najdeme rychlý termín",
+      "Termín platnosti hlídejte podle nálepky na SPZ a data v protokolu",
+      "Využijte naši kalkulačku a nechte si termín spočítat dopředu",
+    ],
+  },
+];
+
 export const FAQ = [
   {
     q: "Jak dlouho technická kontrola trvá?",

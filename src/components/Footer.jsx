@@ -25,9 +25,10 @@ export default function Footer() {
             <ul className="footer-links">
               {[
                 ["sluzby", "Služby"],
-                ["prubeh", "Jak to probíhá"],
                 ["cenik", "Ceník"],
-                ["doklady", "Co vzít s sebou"],
+                ["kalkulacka", "Kalkulačka termínu STK"],
+                ["objednani", "Objednání online"],
+                ["radce", "Rádce"],
                 ["faq", "Časté dotazy"],
               ].map(([id, label]) => (
                 <li key={id}>

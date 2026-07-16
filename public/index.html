@@ -18,26 +18,41 @@
     <meta property="og:locale" content="cs_CZ" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Fonty načítáme neblokujícím způsobem (media="print" + onload swap). -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
+    <!-- Fonty jsou self-hostované přes @fontsource (import v src/index.js). -->
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Strukturovaná data pro vyhledávače (Google rich results).
+         POZN.: po nasazení doplňte skutečnou doménu do "url". -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AutoRepair",
+        "name": "Autoservis Topinka",
+        "description": "STK a měření emisí pro osobní vozidla, motocykly a přívěsy v Plzni.",
+        "telephone": "+420377385154",
+        "priceRange": "500–2400 Kč",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Nade Mží 1108/15",
+          "addressLocality": "Plzeň",
+          "postalCode": "318 00",
+          "addressCountry": "CZ"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 49.7408,
+          "longitude": 13.3574
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "07:30",
+            "closes": "16:00"
+          }
+        ]
+      }
+    </script>
     <title>Autoservis Topinka | STK & Emise Plzeň</title>
   </head>
   <body>
