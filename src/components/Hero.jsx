@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import { Magnetic, CountUp, EASE } from "./ui";
 import { PhoneIcon, ArrowIcon, StarIcon } from "./icons";
-import { CONTACT, ROTATING_WORDS, HERO_STATS } from "../data";
+import { CONTACT, ROTATING_WORDS, HERO_STATS, IMAGES } from "../data";
 
 /** Síť částic na pozadí – jemně driftuje a reaguje na kurzor. */
 function ParticleField() {
@@ -186,6 +186,7 @@ export default function Hero() {
   return (
     <section className="hero" id="hero" ref={ref}>
       <motion.div className="hero-bg" style={{ y: bgY }} aria-hidden="true">
+        <img className="hero-bg-photo" src={IMAGES.hero} alt="" />
         <div className="hero-grid-lines" />
         <div className="hero-glow hero-glow--1" />
         <div className="hero-glow hero-glow--2" />

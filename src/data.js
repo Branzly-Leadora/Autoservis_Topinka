@@ -17,6 +17,31 @@ export const CONTACT = {
   ],
 };
 
+// Ilustrační fotografie (Unsplash) – před spuštěním ideálně nahraďte
+// skutečnými fotkami stanice.
+export const IMAGES = {
+  hero: "https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=1600&q=70",
+  banner: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=70",
+};
+
+export const GALLERY = [
+  {
+    src: "https://images.unsplash.com/photo-1632823471406-4c5c7e4c6f24?auto=format&fit=crop&w=900&q=70",
+    alt: "Technik při kontrole vozidla",
+    caption: "Pečlivost u každé kontroly",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=900&q=70",
+    alt: "Detail motoru vozidla",
+    caption: "Důkladná prohlídka techniky",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=70",
+    alt: "Zázemí dílny stanice",
+    caption: "Moderní zázemí stanice",
+  },
+];
+
 export const ROTATING_WORDS = [
   "osobní vozidla",
   "motocykly",

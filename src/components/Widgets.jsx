@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { PhoneIcon, ArrowIcon } from "./icons";
 import { CONTACT } from "../data";
+import { scrollToTop } from "../lib/smoothScroll";
 
 /** Zelený progress bar u horní hrany, roste se scrollem. */
 export function ScrollProgress() {
@@ -53,7 +54,7 @@ export function BackToTop() {
       {show && (
         <motion.button
           className="back-to-top"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={scrollToTop}
           initial={{ opacity: 0, scale: 0.6 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.6 }}

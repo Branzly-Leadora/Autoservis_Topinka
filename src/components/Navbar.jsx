@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { PhoneIcon } from "./icons";
 import { CONTACT } from "../data";
+import { scrollToId, scrollToTop, setScrollPaused } from "../lib/smoothScroll";
 
 const LINKS = [
   { id: "sluzby", label: "Služby" },
@@ -12,10 +13,6 @@ const LINKS = [
   { id: "kontakt", label: "Kontakt" },
 ];
 
-export function scrollToId(id) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-}
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -25,11 +22,13 @@ export default function Navbar() {
 
   useEffect(() => scrollY.on("change", (v) => setScrolled(v > 50)), [scrollY]);
 
-  // Zámek scrollu, dokud je otevřené mobilní menu.
+  // Zámek scrollu (nativního i Lenis), dokud je otevřené mobilní menu.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    setScrollPaused(open);
     return () => {
       document.body.style.overflow = "";
+      setScrollPaused(false);
     };
   }, [open]);
 
@@ -74,7 +73,7 @@ export default function Navbar() {
       >
         <button
           className="nav-logo"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={scrollToTop}
           aria-label="STK Topinka – zpět na začátek stránky"
         >
           <span className="nav-logo-badge" aria-hidden="true">

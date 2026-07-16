@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, MotionConfig } from "framer-motion";
+import { initSmoothScroll } from "./lib/smoothScroll";
 import "./App.css";
 
 import Preloader from "./components/Preloader";
@@ -8,10 +9,12 @@ import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
 import Services from "./components/Services";
 import Process from "./components/Process";
+import Gallery from "./components/Gallery";
 import Pricing from "./components/Pricing";
 import Checklist from "./components/Checklist";
 import Reviews from "./components/Reviews";
 import Faq from "./components/Faq";
+import CtaBanner from "./components/CtaBanner";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { ScrollProgress, FloatingCall, BackToTop } from "./components/Widgets";
@@ -27,6 +30,9 @@ function shouldShowPreloader() {
 
 export default function App() {
   const [loading, setLoading] = useState(shouldShowPreloader);
+
+  // Lenis smooth scroll pro celý web.
+  useEffect(() => initSmoothScroll(), []);
 
   useEffect(() => {
     if (!loading) return;
@@ -54,10 +60,12 @@ export default function App() {
           <Marquee />
           <Services />
           <Process />
+          <Gallery />
           <Pricing />
           <Checklist />
           <Reviews />
           <Faq />
+          <CtaBanner />
           <Contact />
         </main>
 
